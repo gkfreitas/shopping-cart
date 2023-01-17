@@ -17,11 +17,12 @@ describe('Teste a função fetchProduct', () => {
   
     it('fetch é chamado com o endpoint correto ao executar fetchProduct', async () => {
       const expected = 'MLB1405519561';
-      expect(await fetchProduct('MLB1405519561').id).toEqual(expected);
+      const data = await fetchProduct('MLB1405519561');
+      expect(data.id).toEqual(expected);
     });
   
     it('Teste se o retorno da função fetchProduct com o argumento computador é uma estrutura de dados igual ao objeto computadorSearch', async () => {
-      expect(Object.keys(await fetchProduct('MLB1405519561"'))).toEqual(Object.keys(product));
+      expect(Object.keys(await fetchProduct('MLB1405519561'))).toEqual(Object.keys(product));
     });
   
     it('Teste se, ao chamar a função fetchProduct sem argumento, retorna um erro ', async () => {
