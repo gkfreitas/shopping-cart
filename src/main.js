@@ -1,4 +1,4 @@
-import { saveCartID } from './helpers/cartFunctions';
+import { getSavedCartIDs, saveCartID } from './helpers/cartFunctions';
 import { searchCep } from './helpers/cepFunctions';
 import { fetchProduct, fetchProductsList } from './helpers/fetchFunctions';
 import { createCartProductElement, createProductElement } from './helpers/shopFunctions';
@@ -29,9 +29,17 @@ const createProdcutsCart = async () => {
     const id = productId[i].innerHTML;
     saveCartID(id);
     const data = await fetchProduct(id);
-    const cartProduct = createProductElement(data);
+    const cartProduct = createCartProductElement(data);
     cartProducts.appendChild(cartProduct);
   }));
 };
 
 createProdcutsCart();
+console.log(getSavedCartIDs());
+window.onload = function () {
+  getSavedCartIDs().map(async (e) => {
+    const data = await fetchProduct(e);
+    const cartProduct = createCartProductElement(data);
+    cartProducts.appendChild(cartProduct);
+  });
+};
