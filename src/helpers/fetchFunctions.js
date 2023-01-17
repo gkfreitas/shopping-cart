@@ -1,4 +1,4 @@
-export const fetchProduct = () => {
+export const fetchProduct = async () => {
   // seu código aqui
 };
 
