@@ -1,5 +1,5 @@
 import { getSavedCartIDs, saveCartID } from './helpers/cartFunctions';
-import { getAddress, searchCep } from './helpers/cepFunctions';
+import { searchCep } from './helpers/cepFunctions';
 import { fetchProduct, fetchProductsList } from './helpers/fetchFunctions';
 import { createCartProductElement, createProductElement } from './helpers/shopFunctions';
 import './style.css';
@@ -12,7 +12,6 @@ const totalPrice = document.querySelector('.total-price');
 const repeatCart = '.cart__product';
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
-
 
 const calcTotalPrice = () => {
   const product = document.querySelectorAll(repeatCart);

@@ -18,10 +18,16 @@ export const searchCep = async () => {
   try {
     const data = await getAddress();
     if (data.neighborhood) {
-      cepInfo.innerHTML = `${data.street} - ${data.neighborhood} - ${data.city} - ${data.state}`;
+      const { street, neighborhood, city, state } = data;
+      const text = `${street} - ${neighborhood} - ${city} - ${state}`;
+      cepInfo.innerHTML = text;
     }
     if (data.address_type) {
-      cepInfo.innerHTML = `${data.address_type} ${data.address_name} - ${data.district} - ${data.city} - ${data.state}`;
+      const { district, city, state } = data;
+      const addressName = data.address_name;
+      const addressType = data.address_type;
+      const text = `${addressType} ${addressName} - ${district} - ${city} - ${state}`;
+      cepInfo.innerHTML = text;
     }
   } catch (error) {
     cepInfo.innerHTML = 'CEP não encontrado';
